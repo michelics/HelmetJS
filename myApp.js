@@ -4,6 +4,7 @@
 ***********************************************/
 
 var express = require('express'); // Do Not Edit
+var helmet = require('helmet');
 var app = express();              // Do Not Edit
 
 // ----
@@ -207,6 +208,7 @@ var ninetyDaysInSeconds = 90*24*60*60;
 module.exports = app;
 var api = require('./server.js');
 app.use(express.static('public'));
+app.use(helmet());
 app.disable('strict-transport-security');
 app.use('/_api', api);
 app.get("/", function (request, response) {
